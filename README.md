@@ -1,18 +1,16 @@
-# Project name here
-> Summary description here.
+# SMILES Pair Encoding.
+> SMILES Pair Encoding (SmilesPE) trains a substructure tokenizer from a large set of SMILES strings (e.g., ChEMBL) based on [byte-pair-encoding (BPE)](https://www.aclweb.org/anthology/P16-1162/).
 
-
-This file will become your README and also the index of your documentation.
 
 ## Install
 
 `pip install your_project_name`
 
-## How to use
+## Use the Pre-trained 
 
 Fill me in please! Don't forget code examples:
 
-```
+```python
 1+1
 ```
 

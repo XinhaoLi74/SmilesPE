@@ -2,22 +2,24 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {"atomwise_tokenizer": "00_SmilesPE.ipynb",
-         "randomize_smiles": "00_SmilesPE.ipynb",
-         "get_vocabulary": "00_SmilesPE.ipynb",
-         "update_pair_statistics": "00_SmilesPE.ipynb",
-         "get_pair_statistics": "00_SmilesPE.ipynb",
-         "replace_pair": "00_SmilesPE.ipynb",
-         "prune_stats": "00_SmilesPE.ipynb",
-         "learn_SPE": "00_SmilesPE.ipynb",
-         "SPE_Tokenizer": "00_SmilesPE.ipynb",
-         "encode": "00_SmilesPE.ipynb",
-         "isolate_glossary": "00_SmilesPE.ipynb"}
+index = {"atomwise_tokenizer": "01_learner.ipynb",
+         "randomize_smiles": "01_learner.ipynb",
+         "get_vocabulary": "01_learner.ipynb",
+         "update_pair_statistics": "01_learner.ipynb",
+         "get_pair_statistics": "01_learner.ipynb",
+         "replace_pair": "01_learner.ipynb",
+         "prune_stats": "01_learner.ipynb",
+         "learn_SPE": "02_tokenizer.ipynb",
+         "SPE_Tokenizer": "02_tokenizer.ipynb",
+         "encode": "02_tokenizer.ipynb",
+         "isolate_glossary": "02_tokenizer.ipynb"}
 
-modules = ["SmilesPE.py"]
+modules = ["pretokenizer.py",
+           "learner.py",
+           "tokenizer.py"]
 
 doc_url = "https://XinhaoLi74.github.io/SmilesPE/"
 
-git_url = "https://github.com/XinhaoLi74/SMILES Pair Encoding/tree/master/"
+git_url = "https://github.com/XinhaoLi74/SmilesPE/tree/master/"
 
 def custom_doc_links(name): return None

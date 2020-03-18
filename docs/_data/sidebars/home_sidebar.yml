@@ -10,8 +10,14 @@ entries:
       title: Overview
       url: /
     - output: web,pdf
-      title: SMILES Pair Encoding (SmilesPE)
-      url: /SmilesPE
+      title: Pre-Tokenizer
+      url: /pretokenizer
+    - output: web,pdf
+      title: SMILES Pair Encoding (SmilesPE) Learner
+      url: /learner
+    - output: web,pdf
+      title: SPE Tokenizer
+      url: /tokenizer
     output: web
     title: SmilesPE
   output: web

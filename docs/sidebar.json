@@ -1,6 +1,8 @@
 {
   "SmilesPE": {
     "Overview": "/",
-    "SMILES Pair Encoding (SmilesPE)": "/SmilesPE"
+    "Pre-Tokenizer": "/pretokenizer",
+    "SMILES Pair Encoding (SmilesPE) Learner": "/learner",
+    "SPE Tokenizer": "/tokenizer"
   }
 }
