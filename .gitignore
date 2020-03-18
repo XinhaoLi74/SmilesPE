@@ -1,3 +1,6 @@
+# Large SMILES dataset
+.smi
+
 *.bak
 .gitattributes
 .last_checked
