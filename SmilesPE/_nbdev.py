@@ -3,13 +3,15 @@
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
 index = {"atomwise_tokenizer": "01_learner.ipynb",
+         "kmer_tokenizer": "00_pretokenizer.ipynb",
+         "tokens_to_mer": "00_pretokenizer.ipynb",
          "randomize_smiles": "01_learner.ipynb",
          "get_vocabulary": "01_learner.ipynb",
          "update_pair_statistics": "01_learner.ipynb",
          "get_pair_statistics": "01_learner.ipynb",
          "replace_pair": "01_learner.ipynb",
          "prune_stats": "01_learner.ipynb",
-         "learn_SPE": "02_tokenizer.ipynb",
+         "learn_SPE": "01_learner.ipynb",
          "SPE_Tokenizer": "02_tokenizer.ipynb",
          "encode": "02_tokenizer.ipynb",
          "isolate_glossary": "02_tokenizer.ipynb"}

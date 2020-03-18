@@ -11,7 +11,11 @@ import inspect
 import copy
 import io
 import warnings
+import re
 from collections import defaultdict, Counter
+from fastprogress.fastprogress import master_bar, progress_bar
+
+from .pretokenizer import *
 
 def atomwise_tokenizer(smi, exclusive_tokens = None):
     """
@@ -64,15 +68,16 @@ def get_vocabulary(smiles, augmentation=0, exclusive_tokens = False):
 
     print(f'{len(vocab)} unique Canonical SMILES')
 
-
     if augmentation>0:
         print(f'Augmenting SMILES...({augmentation} times)')
-        for i, smi in enumerate(smiles):
-            for j in range(augmentation):
+        mb = master_bar(range(augmentation))
+        for i in mb:
+            for smi in progress_bar(smiles, parent=mb):
                 randomized_smi = randomize_smiles(smi)
                 vocab[randomized_smi] += 1
 
         print(f'{len(vocab)} unique SMILES (Canonical + Augmented)')
+    return dict([(tuple(atomwise_tokenizer(x)) ,y) for (x,y) in vocab.items()])
 
 def update_pair_statistics(pair, changed, stats, indices):
     """Minimally update the indices and frequency of symbol pairs
@@ -140,7 +145,7 @@ def get_pair_statistics(vocab):
     #index from pairs to words
     indices = defaultdict(lambda: defaultdict(int))
 
-    for i, (word, freq) in enumerate(vocab):
+    for i, (word, freq) in enumerate(progress_bar(vocab)):
         prev_char = word[0]
         for char in word[1:]:
             stats[prev_char, char] += freq
@@ -148,7 +153,6 @@ def get_pair_statistics(vocab):
             prev_char = char
 
     return stats, indices
-
 
 def replace_pair(pair, vocab, indices):
     """Replace all occurrences of a symbol pair ('A', 'B') with a new symbol 'AB'"""
@@ -205,9 +209,12 @@ def learn_SPE(infile, outfile, num_symbols, min_frequency=2, augmentation=0, ver
     *total_symbols*: if True; the maximum total of SPE symbols = num_symbols - number of atom-level tokens
     """
 
+
+
     vocab = get_vocabulary(infile, augmentation=augmentation)
     sorted_vocab = sorted(vocab.items(), key=lambda x: x[1], reverse=True)
 
+    print('Gettting Pair Statistics')
     stats, indices = get_pair_statistics(sorted_vocab)
     big_stats = copy.deepcopy(stats)
 
@@ -219,8 +226,6 @@ def learn_SPE(infile, outfile, num_symbols, min_frequency=2, augmentation=0, ver
         sys.stderr.write(f'Number of unique characters & Reducing number of merge operations by: {len(uniq_char)}\n')
         sys.stderr.write(f'Unique characters: {(uniq_char)}\n')
         num_symbols -= len(uniq_char)
-        for i in uniq_char:
-            vocab_index2units2freq[i] = 0
 
     # threshold is inspired by Zipfian assumption, but should only affect speed
     threshold = max(stats.values()) / 10
@@ -241,15 +246,9 @@ def learn_SPE(infile, outfile, num_symbols, min_frequency=2, augmentation=0, ver
             sys.stderr.write('no pair has frequency >= {0}. Stopping\n'.format(min_frequency))
             break
 
-        s1 = most_frequent[0]
-        s2 = most_frequent[1]
-
-        vocab_index2units2freq[s1+s2] = stats[most_frequent]
-
         if verbose:
             sys.stderr.write('pair {0}: {1} {2} -> {1}{2} (frequency {3})\n'.format(i, most_frequent[0], most_frequent[1], stats[most_frequent]))
         outfile.write('{0} {1}\n'.format(*most_frequent))
-        freq_codes.append(most_frequent)
         changes = replace_pair(most_frequent, sorted_vocab, indices)
         update_pair_statistics(most_frequent, changes, stats, indices)
         stats[most_frequent] = 0

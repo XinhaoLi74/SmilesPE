@@ -2,7 +2,7 @@
   "SmilesPE": {
     "Overview": "/",
     "Pre-Tokenizer": "/pretokenizer",
-    "SMILES Pair Encoding (SmilesPE) Learner": "/learner",
-    "SPE Tokenizer": "/tokenizer"
+    "SmilesPE Learner": "/learner",
+    "SmilesPE Tokenizer": "/tokenizer"
   }
 }
