@@ -6,9 +6,11 @@
 
 ## Installation
 
-`pip install SmilesPE`
+```
+pip install SmilesPE
+```
 
-## Examples
+## Usage Instructions
 
 ### Basic Tokenizers
 
@@ -99,4 +101,10 @@ print(toks)
 
 ### Use the Pre-trained SmilesPE Tokenizer
 
+Dowbload ['SPE_ChEMBL.txt'](https://github.com/XinhaoLi74/SmilesPE/blob/master/SPE_ChEMBL.txt).
+
 ### Train a SmilesPE Tokenizer with a Custom Dataset
+
+See [train_SPE.ipynb](https://github.com/XinhaoLi74/SmilesPE/blob/master/Examples/train_SPE.ipynb)
+
+### SMILES Augmentation
