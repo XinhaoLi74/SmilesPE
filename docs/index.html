@@ -334,6 +334,17 @@ description: "SMILES Pair Encoding (SmilesPE) trains a substructure tokenizer fr
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Use-the-Pre-trained-SmilesPE-Tokenizer">Use the Pre-trained SmilesPE Tokenizer<a class="anchor-link" href="#Use-the-Pre-trained-SmilesPE-Tokenizer"> </a></h3><p>Dowbload <a href="https://github.com/XinhaoLi74/SmilesPE/blob/master/SPE_ChEMBL.txt">'SPE_ChEMBL.txt'</a>.</p>
 
+<pre><code>import codecs
+from SmilesPE.tokenizer import *
+
+spe_vob= codecs.open('../SPE_ChEMBL.txt')
+spe = SPE_Tokenizer(spe_vob)
+
+smi = 'CC[N+](C)(C)Cc1ccccc1Br'
+spe.tokenize(smi)
+
+&gt;&gt;&gt; 'CC [N+](C) (C)C c1ccccc1 Br'</code></pre>
+
 </div>
 </div>
 </div>

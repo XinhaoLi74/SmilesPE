@@ -103,6 +103,19 @@ print(toks)
 
 Dowbload ['SPE_ChEMBL.txt'](https://github.com/XinhaoLi74/SmilesPE/blob/master/SPE_ChEMBL.txt).
 
+```
+import codecs
+from SmilesPE.tokenizer import *
+
+spe_vob= codecs.open('../SPE_ChEMBL.txt')
+spe = SPE_Tokenizer(spe_vob)
+
+smi = 'CC[N+](C)(C)Cc1ccccc1Br'
+spe.tokenize(smi)
+
+>>> 'CC [N+](C) (C)C c1ccccc1 Br'
+```
+
 ### Train a SmilesPE Tokenizer with a Custom Dataset
 
 See [train_SPE.ipynb](https://github.com/XinhaoLi74/SmilesPE/blob/master/Examples/train_SPE.ipynb)
