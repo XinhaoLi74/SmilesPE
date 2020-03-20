@@ -18,6 +18,9 @@ entries:
     - output: web,pdf
       title: SmilesPE Tokenizer
       url: /tokenizer
+    - output: web,pdf
+      title: SPE2Vec
+      url: /spe2vec
     output: web
     title: SmilesPE
   output: web

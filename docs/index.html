@@ -333,17 +333,17 @@ description: "SMILES Pair Encoding (SmilesPE) trains a substructure tokenizer fr
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Use-the-Pre-trained-SmilesPE-Tokenizer">Use the Pre-trained SmilesPE Tokenizer<a class="anchor-link" href="#Use-the-Pre-trained-SmilesPE-Tokenizer"> </a></h3><p>Dowbload <a href="https://github.com/XinhaoLi74/SmilesPE/blob/master/SPE_ChEMBL.txt">'SPE_ChEMBL.txt'</a>.</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">codecs</span>
+<span class="kn">from</span> <span class="nn">SmilesPE.tokenizer</span> <span class="kn">import</span> <span class="o">*</span>
 
-<pre><code>import codecs
-from SmilesPE.tokenizer import *
+<span class="n">spe_vob</span><span class="o">=</span> <span class="n">codecs</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;../SPE_ChEMBL.txt&#39;</span><span class="p">)</span>
+<span class="n">spe</span> <span class="o">=</span> <span class="n">SPE_Tokenizer</span><span class="p">(</span><span class="n">spe_vob</span><span class="p">)</span>
 
-spe_vob= codecs.open('../SPE_ChEMBL.txt')
-spe = SPE_Tokenizer(spe_vob)
+<span class="n">smi</span> <span class="o">=</span> <span class="s1">&#39;CC[N+](C)(C)Cc1ccccc1Br&#39;</span>
+<span class="n">spe</span><span class="o">.</span><span class="n">tokenize</span><span class="p">(</span><span class="n">smi</span><span class="p">)</span>
 
-smi = 'CC[N+](C)(C)Cc1ccccc1Br'
-spe.tokenize(smi)
-
-&gt;&gt;&gt; 'CC [N+](C) (C)C c1ccccc1 Br'</code></pre>
+<span class="o">&gt;&gt;&gt;</span> <span class="s1">&#39;CC [N+](C) (C)C c1ccccc1 Br&#39;</span>
+</pre></div>
 
 </div>
 </div>
@@ -352,12 +352,6 @@ spe.tokenize(smi)
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Train-a-SmilesPE-Tokenizer-with-a-Custom-Dataset">Train a SmilesPE Tokenizer with a Custom Dataset<a class="anchor-link" href="#Train-a-SmilesPE-Tokenizer-with-a-Custom-Dataset"> </a></h3><p>See <a href="https://github.com/XinhaoLi74/SmilesPE/blob/master/Examples/train_SPE.ipynb">train_SPE.ipynb</a></p>
 
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="SMILES-Augmentation">SMILES Augmentation<a class="anchor-link" href="#SMILES-Augmentation"> </a></h3>
 </div>
 </div>
 </div>

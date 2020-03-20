@@ -3,6 +3,7 @@
     "Overview": "/",
     "Pre-Tokenizer": "/pretokenizer",
     "SmilesPE Learner": "/learner",
-    "SmilesPE Tokenizer": "/tokenizer"
+    "SmilesPE Tokenizer": "/tokenizer",
+    "SPE2Vec": "/spe2vec"
   }
 }

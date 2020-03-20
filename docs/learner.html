@@ -36,32 +36,7 @@ description: "Train a SmilesPE learner "
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="atomwise_tokenizer" class="doc_header"><code>atomwise_tokenizer</code><a href="__main__.py#L15" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>atomwise_tokenizer</code>(<strong><code>smi</code></strong>, <strong><code>exclusive_tokens</code></strong>=<em><code>None</code></em>)</p>
-</blockquote>
-<p>Tokenize a SMILES molecule at atom-level:
-    (1) 'Br' and 'Cl' are two-character tokens
-    (2) Symbols with bracket are considered as tokens</p>
-<p>exclusive_tokens: A list of specifical symbols with bracket you want to keep. e.g., ['[C@@H]', '[nH]'].
-Other symbols with bracket will be replaced by '[UNK]'. default is <code>None</code>.</p>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-<div class="output_markdown rendered_html output_subarea ">
-<h4 id="randomize_smiles" class="doc_header"><code>randomize_smiles</code><a href="__main__.py#L37" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>randomize_smiles</code>(<strong><code>smiles</code></strong>)</p>
+<h4 id="randomize_smiles" class="doc_header"><code>randomize_smiles</code><a href="__main__.py#L15" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>randomize_smiles</code>(<strong><code>smiles</code></strong>)</p>
 </blockquote>
 <p>Require <code>RDKit</code> library.</p>
 <p>Generate a new SMILES string for the same molecule.</p>
@@ -84,7 +59,31 @@ Other symbols with bracket will be replaced by '[UNK]'. default is <code>None</c
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_vocabulary" class="doc_header"><code>get_vocabulary</code><a href="__main__.py#L55" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_vocabulary</code>(<strong><code>smiles</code></strong>, <strong><code>augmentation</code></strong>=<em><code>0</code></em>, <strong><code>exclusive_tokens</code></strong>=<em><code>False</code></em>)</p>
+<h4 id="corpus_augment" class="doc_header"><code>corpus_augment</code><a href="__main__.py#L33" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>corpus_augment</code>(<strong><code>infile</code></strong>, <strong><code>outdir</code></strong>, <strong><code>cycles</code></strong>)</p>
+</blockquote>
+<p>infile: line separated SMILES file
+outdir: directory to save the  augmented SMILE file. 
+    Each round of augmentation will save as a separated file, named as <code>infile_Ri</code>. 
+cycles: number of rounds for SMILES augmentation</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="get_vocabulary" class="doc_header"><code>get_vocabulary</code><a href="__main__.py#L57" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_vocabulary</code>(<strong><code>smiles</code></strong>, <strong><code>augmentation</code></strong>=<em><code>0</code></em>, <strong><code>exclusive_tokens</code></strong>=<em><code>False</code></em>)</p>
 </blockquote>
 <p>Read text and return dictionary that encodes vocabulary</p>
 
@@ -105,7 +104,7 @@ Other symbols with bracket will be replaced by '[UNK]'. default is <code>None</c
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="update_pair_statistics" class="doc_header"><code>update_pair_statistics</code><a href="__main__.py#L77" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>update_pair_statistics</code>(<strong><code>pair</code></strong>, <strong><code>changed</code></strong>, <strong><code>stats</code></strong>, <strong><code>indices</code></strong>)</p>
+<h4 id="update_pair_statistics" class="doc_header"><code>update_pair_statistics</code><a href="__main__.py#L79" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>update_pair_statistics</code>(<strong><code>pair</code></strong>, <strong><code>changed</code></strong>, <strong><code>stats</code></strong>, <strong><code>indices</code></strong>)</p>
 </blockquote>
 <p>Minimally update the indices and frequency of symbol pairs
 if we merge a pair of symbols, only pairs that overlap with occurrences
@@ -128,7 +127,7 @@ of this pair are affected, and need to be updated.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_pair_statistics" class="doc_header"><code>get_pair_statistics</code><a href="__main__.py#L134" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_pair_statistics</code>(<strong><code>vocab</code></strong>)</p>
+<h4 id="get_pair_statistics" class="doc_header"><code>get_pair_statistics</code><a href="__main__.py#L136" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_pair_statistics</code>(<strong><code>vocab</code></strong>)</p>
 </blockquote>
 <p>Count frequency of all symbol pairs, and create index</p>
 
@@ -149,7 +148,7 @@ of this pair are affected, and need to be updated.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="replace_pair" class="doc_header"><code>replace_pair</code><a href="__main__.py#L152" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>replace_pair</code>(<strong><code>pair</code></strong>, <strong><code>vocab</code></strong>, <strong><code>indices</code></strong>)</p>
+<h4 id="replace_pair" class="doc_header"><code>replace_pair</code><a href="__main__.py#L154" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>replace_pair</code>(<strong><code>pair</code></strong>, <strong><code>vocab</code></strong>, <strong><code>indices</code></strong>)</p>
 </blockquote>
 <p>Replace all occurrences of a symbol pair ('A', 'B') with a new symbol 'AB'</p>
 
@@ -170,7 +169,7 @@ of this pair are affected, and need to be updated.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="prune_stats" class="doc_header"><code>prune_stats</code><a href="__main__.py#L176" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>prune_stats</code>(<strong><code>stats</code></strong>, <strong><code>big_stats</code></strong>, <strong><code>threshold</code></strong>)</p>
+<h4 id="prune_stats" class="doc_header"><code>prune_stats</code><a href="__main__.py#L178" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>prune_stats</code>(<strong><code>stats</code></strong>, <strong><code>big_stats</code></strong>, <strong><code>threshold</code></strong>)</p>
 </blockquote>
 <p>Prune statistics dict for efficiency of max()
 The frequency of a symbol pair never increases, so pruning is generally safe
@@ -194,7 +193,7 @@ big_stats keeps full statistics for when we need to access pruned items</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="learn_SPE" class="doc_header"><code>learn_SPE</code><a href="__main__.py#L190" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>learn_SPE</code>(<strong><code>infile</code></strong>, <strong><code>outfile</code></strong>, <strong><code>num_symbols</code></strong>, <strong><code>min_frequency</code></strong>=<em><code>2</code></em>, <strong><code>augmentation</code></strong>=<em><code>0</code></em>, <strong><code>verbose</code></strong>=<em><code>False</code></em>, <strong><code>total_symbols</code></strong>=<em><code>False</code></em>)</p>
+<h4 id="learn_SPE" class="doc_header"><code>learn_SPE</code><a href="__main__.py#L192" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>learn_SPE</code>(<strong><code>infile</code></strong>, <strong><code>outfile</code></strong>, <strong><code>num_symbols</code></strong>, <strong><code>min_frequency</code></strong>=<em><code>2</code></em>, <strong><code>augmentation</code></strong>=<em><code>0</code></em>, <strong><code>verbose</code></strong>=<em><code>False</code></em>, <strong><code>total_symbols</code></strong>=<em><code>False</code></em>)</p>
 </blockquote>
 <p>Learn num_symbols SPE operations from infile and write to outfile.</p>
 <p><em>infile</em>: a list of SMILES</p>
