@@ -83,7 +83,7 @@ cycles: number of rounds for SMILES augmentation</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_vocabulary" class="doc_header"><code>get_vocabulary</code><a href="__main__.py#L57" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_vocabulary</code>(<strong><code>smiles</code></strong>, <strong><code>augmentation</code></strong>=<em><code>0</code></em>, <strong><code>exclusive_tokens</code></strong>=<em><code>False</code></em>)</p>
+<h4 id="get_vocabulary" class="doc_header"><code>get_vocabulary</code><a href="__main__.py#L58" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_vocabulary</code>(<strong><code>smiles</code></strong>, <strong><code>augmentation</code></strong>=<em><code>0</code></em>, <strong><code>exclusive_tokens</code></strong>=<em><code>False</code></em>)</p>
 </blockquote>
 <p>Read text and return dictionary that encodes vocabulary</p>
 
@@ -104,7 +104,7 @@ cycles: number of rounds for SMILES augmentation</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="update_pair_statistics" class="doc_header"><code>update_pair_statistics</code><a href="__main__.py#L79" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>update_pair_statistics</code>(<strong><code>pair</code></strong>, <strong><code>changed</code></strong>, <strong><code>stats</code></strong>, <strong><code>indices</code></strong>)</p>
+<h4 id="update_pair_statistics" class="doc_header"><code>update_pair_statistics</code><a href="__main__.py#L80" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>update_pair_statistics</code>(<strong><code>pair</code></strong>, <strong><code>changed</code></strong>, <strong><code>stats</code></strong>, <strong><code>indices</code></strong>)</p>
 </blockquote>
 <p>Minimally update the indices and frequency of symbol pairs
 if we merge a pair of symbols, only pairs that overlap with occurrences
@@ -127,7 +127,7 @@ of this pair are affected, and need to be updated.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_pair_statistics" class="doc_header"><code>get_pair_statistics</code><a href="__main__.py#L136" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_pair_statistics</code>(<strong><code>vocab</code></strong>)</p>
+<h4 id="get_pair_statistics" class="doc_header"><code>get_pair_statistics</code><a href="__main__.py#L137" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_pair_statistics</code>(<strong><code>vocab</code></strong>)</p>
 </blockquote>
 <p>Count frequency of all symbol pairs, and create index</p>
 
@@ -148,7 +148,7 @@ of this pair are affected, and need to be updated.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="replace_pair" class="doc_header"><code>replace_pair</code><a href="__main__.py#L154" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>replace_pair</code>(<strong><code>pair</code></strong>, <strong><code>vocab</code></strong>, <strong><code>indices</code></strong>)</p>
+<h4 id="replace_pair" class="doc_header"><code>replace_pair</code><a href="__main__.py#L155" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>replace_pair</code>(<strong><code>pair</code></strong>, <strong><code>vocab</code></strong>, <strong><code>indices</code></strong>)</p>
 </blockquote>
 <p>Replace all occurrences of a symbol pair ('A', 'B') with a new symbol 'AB'</p>
 
@@ -169,7 +169,7 @@ of this pair are affected, and need to be updated.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="prune_stats" class="doc_header"><code>prune_stats</code><a href="__main__.py#L178" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>prune_stats</code>(<strong><code>stats</code></strong>, <strong><code>big_stats</code></strong>, <strong><code>threshold</code></strong>)</p>
+<h4 id="prune_stats" class="doc_header"><code>prune_stats</code><a href="__main__.py#L179" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>prune_stats</code>(<strong><code>stats</code></strong>, <strong><code>big_stats</code></strong>, <strong><code>threshold</code></strong>)</p>
 </blockquote>
 <p>Prune statistics dict for efficiency of max()
 The frequency of a symbol pair never increases, so pruning is generally safe
@@ -193,7 +193,7 @@ big_stats keeps full statistics for when we need to access pruned items</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="learn_SPE" class="doc_header"><code>learn_SPE</code><a href="__main__.py#L192" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>learn_SPE</code>(<strong><code>infile</code></strong>, <strong><code>outfile</code></strong>, <strong><code>num_symbols</code></strong>, <strong><code>min_frequency</code></strong>=<em><code>2</code></em>, <strong><code>augmentation</code></strong>=<em><code>0</code></em>, <strong><code>verbose</code></strong>=<em><code>False</code></em>, <strong><code>total_symbols</code></strong>=<em><code>False</code></em>)</p>
+<h4 id="learn_SPE" class="doc_header"><code>learn_SPE</code><a href="__main__.py#L193" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>learn_SPE</code>(<strong><code>infile</code></strong>, <strong><code>outfile</code></strong>, <strong><code>num_symbols</code></strong>, <strong><code>min_frequency</code></strong>=<em><code>2</code></em>, <strong><code>augmentation</code></strong>=<em><code>0</code></em>, <strong><code>verbose</code></strong>=<em><code>False</code></em>, <strong><code>total_symbols</code></strong>=<em><code>False</code></em>)</p>
 </blockquote>
 <p>Learn num_symbols SPE operations from infile and write to outfile.</p>
 <p><em>infile</em>: a list of SMILES</p>

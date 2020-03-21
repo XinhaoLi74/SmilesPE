@@ -51,10 +51,11 @@ def corpus_augment(infile, outdir, cycles):
             can_smiles.append(line.split('\n')[0])
 
     fname = os.path.basename(infile).split('.')[0]
+    ftype = os.path.basename(infile).split('.')[1]
 
     mb = master_bar(range(cycles))
     for i in mb:
-        with open(f'{outdir}/{fname}_R{i}', 'a') as outfile:
+        with open(f'{outdir}/{fname}_R{i}.{ftype}', 'a') as outfile:
             for smi in progress_bar(can_smiles, parent=mb):
                 randomized_smi = randomize_smiles(smi)
                 outfile.write(randomized_smi + '\n')

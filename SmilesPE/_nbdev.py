@@ -18,7 +18,7 @@ index = {"atomwise_tokenizer": "00_pretokenizer.ipynb",
          "isolate_glossary": "02_tokenizer.ipynb",
          "Corpus": "03_spe2vec.ipynb",
          "learn_spe2vec": "03_spe2vec.ipynb",
-         "SPE2Vec": "03_spe2vec.ipynb"}
+         "load_spe2vec": "03_spe2vec.ipynb"}
 
 modules = ["pretokenizer.py",
            "learner.py",
