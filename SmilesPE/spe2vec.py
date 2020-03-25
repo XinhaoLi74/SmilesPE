@@ -71,8 +71,6 @@ def learn_spe2vec(corpus, outfile=None,
 def load_spe2vec(model_path):
     return gensim.models.Word2Vec.load(model_path)
 
-
-
 # Cell
 
 import numpy as np
@@ -98,7 +96,15 @@ class SPE2Vec(object):
 
     def smiles2vec(self, smi, dropout=0, mode = 'average'):
         '''
-        Generate a vector for a SMILES. The vector is simply a sum of vectors for individual tokens.
+        Generate a vector for a SMILES. The vector is construc in four modes: ['average', 'sum', 'avg_pool', 'sum_pool']
+
+        `average`: average the embedding of all tokens
+
+        `sum`: sum the embedding of all tokens
+
+        `avg_pool`: concatenation of average, max pooling and min pooling
+
+        `sum_pool`: concatenation of sum, max pooling and min pooling
 
         The Unknown token will be skipped
         '''

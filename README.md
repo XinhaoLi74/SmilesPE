@@ -99,4 +99,4 @@ spe.tokenize(smi)
 
 ### Train a SmilesPE Tokenizer with a Custom Dataset
 
-See [train_SPE.ipynb](https://github.com/XinhaoLi74/SmilesPE/blob/master/Examples/train_SPE.ipynb) for an example of training A SPE tokenizer
+See [train_SPE.ipynb](https://github.com/XinhaoLi74/SmilesPE/blob/master/Examples/train_SPE.ipynb) for an example of training A SPE tokenizer on ChEMBL data.
