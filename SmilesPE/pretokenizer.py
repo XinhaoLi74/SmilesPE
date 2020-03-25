@@ -3,26 +3,54 @@
 __all__ = ['atomwise_tokenizer', 'kmer_tokenizer', 'tokens_to_mer']
 
 # Cell
-
-def atomwise_tokenizer(smi, exclusive_tokens = None):
+def atomwise_tokenizer(smiles, exclusive_tokens = None):
     """
     Tokenize a SMILES molecule at atom-level:
         (1) 'Br' and 'Cl' are two-character tokens
         (2) Symbols with bracket are considered as tokens
+        (3) All other symbols are tokenized on character level.
 
     exclusive_tokens: A list of specifical symbols with bracket you want to keep. e.g., ['[C@@H]', '[nH]'].
     Other symbols with bracket will be replaced by '[UNK]'. default is `None`.
     """
     import re
-    pattern =  "(\[[^\]]+]|Br?|Cl?|N|O|S|P|F|I|b|c|n|o|s|p|\(|\)|\.|=|#|-|\+|\\\\|\/|:|~|@|\?|>|\*|\$|\%[0-9]{2}|[0-9])"
-    regex = re.compile(pattern)
-    tokens = [token for token in regex.findall(smi)]
+    from functools import reduce
+    regex = '(\[[^\[\]]{1,10}\])'
+    char_list = re.split(regex, smiles)
+    tokens = []
 
     if exclusive_tokens:
-        for i, tok in enumerate(tokens):
-            if tok.startswith('['):
-                if tok not in exclusive_tokens:
-                    tokens[i] = '[UNK]'
+        for char in char_list:
+            if char.startswith('['):
+                if char in exclusive_tokens:
+                    tokens.append(str(char))
+                else:
+                    tokens.append('[UNK]')
+            else:
+                chars = [unit for unit in char]
+                [tokens.append(i) for i in chars]
+
+    if not exclusive_tokens:
+        for char in char_list:
+            if char.startswith('['):
+                tokens.append(str(char))
+            else:
+                chars = [unit for unit in char]
+                [tokens.append(i) for i in chars]
+
+    #fix the 'Br' be splited into 'B' and 'r'
+    if 'r' in tokens:
+        for index, tok in enumerate(tokens):
+            if tok == 'r':
+                if tokens[index-1] == 'B':
+                        tokens[index-1: index+1] = [reduce(lambda i, j: i + j, tokens[index-1 : index+1])]
+
+    #fix the 'Cl' be splited into 'C' and 'l'
+    if 'l' in tokens:
+        for index, tok in enumerate(tokens):
+            if tok == 'l':
+                if tokens[index-1] == 'C':
+                        tokens[index-1: index+1] = [reduce(lambda i, j: i + j, tokens[index-1 : index+1])]
     return tokens
 
 # Cell

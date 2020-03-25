@@ -49,26 +49,16 @@ import selfies
 smi = 'CC[N+](C)(C)Cc1ccccc1Br'
 sel = selfies.encoder(smi)
 print(f'SELFIES string: {sel}')
-```
-
-    SELFIES string: [C][C][N+][Branch1_2][epsilon][C][Branch1_3][epsilon][C][C][c][c][c][c][c][c][Ring1][Branch1_1][Br]
-
-
-```python
+> >> SELFIES string: [C][C][N+][Branch1_2][epsilon][C][Branch1_3][epsilon][C][C][c][c][c][c][c][c][Ring1][Branch1_1][Br]    
 toks = atomwise_tokenizer(sel)
 print(toks)
-```
+> >> ['[C]', '[C]', '[N+]', '[Branch1_2]', '[epsilon]', '[C]', '[Branch1_3]', '[epsilon]', '[C]', '[C]', '[c]', '[c]', '[c]', '[c]', '[c]', '[c]', '[Ring1]', '[Branch1_1]', '[Br]']
 
-    ['[C]', '[C]', '[N+]', '[Branch1_2]', '[epsilon]', '[C]', '[Branch1_3]', '[epsilon]', '[C]', '[C]', '[c]', '[c]', '[c]', '[c]', '[c]', '[c]', '[Ring1]', '[Branch1_1]', '[Br]']
-
-
-```python
 toks = kmer_tokenizer(sel, ngram=4)
 print(toks)
+
+>>> ['[C][C][N+][Branch1_2]', '[C][N+][Branch1_2][epsilon]', '[N+][Branch1_2][epsilon][C]', '[Branch1_2][epsilon][C][Branch1_3]', '[epsilon][C][Branch1_3][epsilon]', '[C][Branch1_3][epsilon][C]', '[Branch1_3][epsilon][C][C]', '[epsilon][C][C][c]', '[C][C][c][c]', '[C][c][c][c]', '[c][c][c][c]', '[c][c][c][c]', '[c][c][c][c]', '[c][c][c][Ring1]', '[c][c][Ring1][Branch1_1]', '[c][Ring1][Branch1_1][Br]']
 ```
-
-    ['[C][C][N+][Branch1_2]', '[C][N+][Branch1_2][epsilon]', '[N+][Branch1_2][epsilon][C]', '[Branch1_2][epsilon][C][Branch1_3]', '[epsilon][C][Branch1_3][epsilon]', '[C][Branch1_3][epsilon][C]', '[Branch1_3][epsilon][C][C]', '[epsilon][C][C][c]', '[C][C][c][c]', '[C][c][c][c]', '[c][c][c][c]', '[c][c][c][c]', '[c][c][c][c]', '[c][c][c][Ring1]', '[c][c][Ring1][Branch1_1]', '[c][Ring1][Branch1_1][Br]']
-
 
 Example of DeepSMILES
 
@@ -77,27 +67,17 @@ import deepsmiles
 converter = deepsmiles.Converter(rings=True, branches=True)
 smi = 'CC[N+](C)(C)Cc1ccccc1Br'
 deepsmi = converter.encode(smi)
-print(f'SELFIES string: {deepsmi}')
-```
-
-    SELFIES string: CC[N+]C)C)Ccccccc6Br
-
-
-```python
+print(f'DeepSMILES string: {deepsmi}')> >> DeepSMILES string: CC[N+]C)C)Ccccccc6Br
 toks = atomwise_tokenizer(deepsmi)
 print(toks)
-```
 
-    ['C', 'C', '[N+]', 'C', ')', 'C', ')', 'C', 'c', 'c', 'c', 'c', 'c', 'c', '6', 'Br']
+>>> ['C', 'C', '[N+]', 'C', ')', 'C', ')', 'C', 'c', 'c', 'c', 'c', 'c', 'c', '6', 'Br']
 
-
-```python
 toks = kmer_tokenizer(deepsmi, ngram=4)
 print(toks)
+
+>>> ['CC[N+]C', 'C[N+]C)', '[N+]C)C', 'C)C)', ')C)C', 'C)Cc', ')Ccc', 'Cccc', 'cccc', 'cccc', 'cccc', 'ccc6', 'cc6Br']
 ```
-
-    ['CC[N+]C', 'C[N+]C)', '[N+]C)C', 'C)C)', ')C)C', 'C)Cc', ')Ccc', 'Cccc', 'cccc', 'cccc', 'cccc', 'ccc6', 'cc6Br']
-
 
 ### Use the Pre-trained SmilesPE Tokenizer
 
@@ -119,4 +99,4 @@ spe.tokenize(smi)
 
 ### Train a SmilesPE Tokenizer with a Custom Dataset
 
-See [train_SPE.ipynb](https://github.com/XinhaoLi74/SmilesPE/blob/master/Examples/train_SPE.ipynb)
+See [train_SPE.ipynb](https://github.com/XinhaoLi74/SmilesPE/blob/master/Examples/train_SPE.ipynb) for an example of training A SPE tokenizer

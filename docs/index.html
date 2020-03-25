@@ -139,196 +139,40 @@ description: "SMILES Pair Encoding (SmilesPE) trains a substructure tokenizer fr
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The basic tokenizers are also compatible with <a href="https://github.com/aspuru-guzik-group/selfies">SELFIES</a> and <a href="https://github.com/baoilleach/deepsmiles">DeepSMILES</a>. Package installations are required.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 <p>Example of SELFIES</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">selfies</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">selfies</span>
 <span class="n">smi</span> <span class="o">=</span> <span class="s1">&#39;CC[N+](C)(C)Cc1ccccc1Br&#39;</span>
 <span class="n">sel</span> <span class="o">=</span> <span class="n">selfies</span><span class="o">.</span><span class="n">encoder</span><span class="p">(</span><span class="n">smi</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SELFIES string: </span><span class="si">{sel}</span><span class="s1">&#39;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>SELFIES string: [C][C][N+][Branch1_2][epsilon][C][Branch1_3][epsilon][C][C][c][c][c][c][c][c][Ring1][Branch1_1][Br]
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">toks</span> <span class="o">=</span> <span class="n">atomwise_tokenizer</span><span class="p">(</span><span class="n">sel</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="o">&gt;&gt;</span> <span class="n">SELFIES</span> <span class="n">string</span><span class="p">:</span> <span class="p">[</span><span class="n">C</span><span class="p">][</span><span class="n">C</span><span class="p">][</span><span class="n">N</span><span class="o">+</span><span class="p">][</span><span class="n">Branch1_2</span><span class="p">][</span><span class="n">epsilon</span><span class="p">][</span><span class="n">C</span><span class="p">][</span><span class="n">Branch1_3</span><span class="p">][</span><span class="n">epsilon</span><span class="p">][</span><span class="n">C</span><span class="p">][</span><span class="n">C</span><span class="p">][</span><span class="n">c</span><span class="p">][</span><span class="n">c</span><span class="p">][</span><span class="n">c</span><span class="p">][</span><span class="n">c</span><span class="p">][</span><span class="n">c</span><span class="p">][</span><span class="n">c</span><span class="p">][</span><span class="n">Ring1</span><span class="p">][</span><span class="n">Branch1_1</span><span class="p">][</span><span class="n">Br</span><span class="p">]</span>    
+<span class="n">toks</span> <span class="o">=</span> <span class="n">atomwise_tokenizer</span><span class="p">(</span><span class="n">sel</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">toks</span><span class="p">)</span>
-</pre></div>
+<span class="o">&gt;</span> <span class="o">&gt;&gt;</span> <span class="p">[</span><span class="s1">&#39;[C]&#39;</span><span class="p">,</span> <span class="s1">&#39;[C]&#39;</span><span class="p">,</span> <span class="s1">&#39;[N+]&#39;</span><span class="p">,</span> <span class="s1">&#39;[Branch1_2]&#39;</span><span class="p">,</span> <span class="s1">&#39;[epsilon]&#39;</span><span class="p">,</span> <span class="s1">&#39;[C]&#39;</span><span class="p">,</span> <span class="s1">&#39;[Branch1_3]&#39;</span><span class="p">,</span> <span class="s1">&#39;[epsilon]&#39;</span><span class="p">,</span> <span class="s1">&#39;[C]&#39;</span><span class="p">,</span> <span class="s1">&#39;[C]&#39;</span><span class="p">,</span> <span class="s1">&#39;[c]&#39;</span><span class="p">,</span> <span class="s1">&#39;[c]&#39;</span><span class="p">,</span> <span class="s1">&#39;[c]&#39;</span><span class="p">,</span> <span class="s1">&#39;[c]&#39;</span><span class="p">,</span> <span class="s1">&#39;[c]&#39;</span><span class="p">,</span> <span class="s1">&#39;[c]&#39;</span><span class="p">,</span> <span class="s1">&#39;[Ring1]&#39;</span><span class="p">,</span> <span class="s1">&#39;[Branch1_1]&#39;</span><span class="p">,</span> <span class="s1">&#39;[Br]&#39;</span><span class="p">]</span>
 
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>[&#39;[C]&#39;, &#39;[C]&#39;, &#39;[N+]&#39;, &#39;[Branch1_2]&#39;, &#39;[epsilon]&#39;, &#39;[C]&#39;, &#39;[Branch1_3]&#39;, &#39;[epsilon]&#39;, &#39;[C]&#39;, &#39;[C]&#39;, &#39;[c]&#39;, &#39;[c]&#39;, &#39;[c]&#39;, &#39;[c]&#39;, &#39;[c]&#39;, &#39;[c]&#39;, &#39;[Ring1]&#39;, &#39;[Branch1_1]&#39;, &#39;[Br]&#39;]
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">toks</span> <span class="o">=</span> <span class="n">kmer_tokenizer</span><span class="p">(</span><span class="n">sel</span><span class="p">,</span> <span class="n">ngram</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">toks</span> <span class="o">=</span> <span class="n">kmer_tokenizer</span><span class="p">(</span><span class="n">sel</span><span class="p">,</span> <span class="n">ngram</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">toks</span><span class="p">)</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="s1">&#39;[C][C][N+][Branch1_2]&#39;</span><span class="p">,</span> <span class="s1">&#39;[C][N+][Branch1_2][epsilon]&#39;</span><span class="p">,</span> <span class="s1">&#39;[N+][Branch1_2][epsilon][C]&#39;</span><span class="p">,</span> <span class="s1">&#39;[Branch1_2][epsilon][C][Branch1_3]&#39;</span><span class="p">,</span> <span class="s1">&#39;[epsilon][C][Branch1_3][epsilon]&#39;</span><span class="p">,</span> <span class="s1">&#39;[C][Branch1_3][epsilon][C]&#39;</span><span class="p">,</span> <span class="s1">&#39;[Branch1_3][epsilon][C][C]&#39;</span><span class="p">,</span> <span class="s1">&#39;[epsilon][C][C][c]&#39;</span><span class="p">,</span> <span class="s1">&#39;[C][C][c][c]&#39;</span><span class="p">,</span> <span class="s1">&#39;[C][c][c][c]&#39;</span><span class="p">,</span> <span class="s1">&#39;[c][c][c][c]&#39;</span><span class="p">,</span> <span class="s1">&#39;[c][c][c][c]&#39;</span><span class="p">,</span> <span class="s1">&#39;[c][c][c][c]&#39;</span><span class="p">,</span> <span class="s1">&#39;[c][c][c][Ring1]&#39;</span><span class="p">,</span> <span class="s1">&#39;[c][c][Ring1][Branch1_1]&#39;</span><span class="p">,</span> <span class="s1">&#39;[c][Ring1][Branch1_1][Br]&#39;</span><span class="p">]</span>
 </pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>[&#39;[C][C][N+][Branch1_2]&#39;, &#39;[C][N+][Branch1_2][epsilon]&#39;, &#39;[N+][Branch1_2][epsilon][C]&#39;, &#39;[Branch1_2][epsilon][C][Branch1_3]&#39;, &#39;[epsilon][C][Branch1_3][epsilon]&#39;, &#39;[C][Branch1_3][epsilon][C]&#39;, &#39;[Branch1_3][epsilon][C][C]&#39;, &#39;[epsilon][C][C][c]&#39;, &#39;[C][C][c][c]&#39;, &#39;[C][c][c][c]&#39;, &#39;[c][c][c][c]&#39;, &#39;[c][c][c][c]&#39;, &#39;[c][c][c][c]&#39;, &#39;[c][c][c][Ring1]&#39;, &#39;[c][c][Ring1][Branch1_1]&#39;, &#39;[c][Ring1][Branch1_1][Br]&#39;]
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 <p>Example of DeepSMILES</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">deepsmiles</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">deepsmiles</span>
 <span class="n">converter</span> <span class="o">=</span> <span class="n">deepsmiles</span><span class="o">.</span><span class="n">Converter</span><span class="p">(</span><span class="n">rings</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">branches</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">smi</span> <span class="o">=</span> <span class="s1">&#39;CC[N+](C)(C)Cc1ccccc1Br&#39;</span>
 <span class="n">deepsmi</span> <span class="o">=</span> <span class="n">converter</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">smi</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SELFIES string: </span><span class="si">{deepsmi}</span><span class="s1">&#39;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>SELFIES string: CC[N+]C)C)Ccccccc6Br
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">toks</span> <span class="o">=</span> <span class="n">atomwise_tokenizer</span><span class="p">(</span><span class="n">deepsmi</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;DeepSMILES string: </span><span class="si">{deepsmi}</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">&gt;</span> <span class="o">&gt;&gt;</span> <span class="n">DeepSMILES</span> <span class="n">string</span><span class="p">:</span> <span class="n">CC</span><span class="p">[</span><span class="n">N</span><span class="o">+</span><span class="p">]</span><span class="n">C</span><span class="p">)</span><span class="n">C</span><span class="p">)</span><span class="n">Ccccccc6Br</span>
+<span class="n">toks</span> <span class="o">=</span> <span class="n">atomwise_tokenizer</span><span class="p">(</span><span class="n">deepsmi</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">toks</span><span class="p">)</span>
-</pre></div>
 
-    </div>
-</div>
-</div>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;[N+]&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;)&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;)&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;6&#39;</span><span class="p">,</span> <span class="s1">&#39;Br&#39;</span><span class="p">]</span>
 
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>[&#39;C&#39;, &#39;C&#39;, &#39;[N+]&#39;, &#39;C&#39;, &#39;)&#39;, &#39;C&#39;, &#39;)&#39;, &#39;C&#39;, &#39;c&#39;, &#39;c&#39;, &#39;c&#39;, &#39;c&#39;, &#39;c&#39;, &#39;c&#39;, &#39;6&#39;, &#39;Br&#39;]
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">toks</span> <span class="o">=</span> <span class="n">kmer_tokenizer</span><span class="p">(</span><span class="n">deepsmi</span><span class="p">,</span> <span class="n">ngram</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">toks</span> <span class="o">=</span> <span class="n">kmer_tokenizer</span><span class="p">(</span><span class="n">deepsmi</span><span class="p">,</span> <span class="n">ngram</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">toks</span><span class="p">)</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="s1">&#39;CC[N+]C&#39;</span><span class="p">,</span> <span class="s1">&#39;C[N+]C)&#39;</span><span class="p">,</span> <span class="s1">&#39;[N+]C)C&#39;</span><span class="p">,</span> <span class="s1">&#39;C)C)&#39;</span><span class="p">,</span> <span class="s1">&#39;)C)C&#39;</span><span class="p">,</span> <span class="s1">&#39;C)Cc&#39;</span><span class="p">,</span> <span class="s1">&#39;)Ccc&#39;</span><span class="p">,</span> <span class="s1">&#39;Cccc&#39;</span><span class="p">,</span> <span class="s1">&#39;cccc&#39;</span><span class="p">,</span> <span class="s1">&#39;cccc&#39;</span><span class="p">,</span> <span class="s1">&#39;cccc&#39;</span><span class="p">,</span> <span class="s1">&#39;ccc6&#39;</span><span class="p">,</span> <span class="s1">&#39;cc6Br&#39;</span><span class="p">]</span>
 </pre></div>
 
-    </div>
 </div>
 </div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>[&#39;CC[N+]C&#39;, &#39;C[N+]C)&#39;, &#39;[N+]C)C&#39;, &#39;C)C)&#39;, &#39;)C)C&#39;, &#39;C)Cc&#39;, &#39;)Ccc&#39;, &#39;Cccc&#39;, &#39;cccc&#39;, &#39;cccc&#39;, &#39;cccc&#39;, &#39;ccc6&#39;, &#39;cc6Br&#39;]
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -350,7 +194,7 @@ description: "SMILES Pair Encoding (SmilesPE) trains a substructure tokenizer fr
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Train-a-SmilesPE-Tokenizer-with-a-Custom-Dataset">Train a SmilesPE Tokenizer with a Custom Dataset<a class="anchor-link" href="#Train-a-SmilesPE-Tokenizer-with-a-Custom-Dataset"> </a></h3><p>See <a href="https://github.com/XinhaoLi74/SmilesPE/blob/master/Examples/train_SPE.ipynb">train_SPE.ipynb</a></p>
+<h3 id="Train-a-SmilesPE-Tokenizer-with-a-Custom-Dataset">Train a SmilesPE Tokenizer with a Custom Dataset<a class="anchor-link" href="#Train-a-SmilesPE-Tokenizer-with-a-Custom-Dataset"> </a></h3><p>See <a href="https://github.com/XinhaoLi74/SmilesPE/blob/master/Examples/train_SPE.ipynb">train_SPE.ipynb</a> for an example of training A SPE tokenizer</p>
 
 </div>
 </div>
