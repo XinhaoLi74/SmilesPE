@@ -1,8 +1,18 @@
-# SMILES Pair Encoding (SmilesPE).
-> SMILES Pair Encoding (SmilesPE) trains a substructure tokenizer from a large set of SMILES strings (e.g., ChEMBL) based on [byte-pair-encoding (BPE)](https://www.aclweb.org/anthology/P16-1162/).
+# SMILES Pair Encoding: A Data-Driven Substructure Tokenization Algorithm for Deep Learning
+> SMILES Pair Encoding (SmilesPE) first learns a vocabulary of high frequency SMILES substrings from a large chemical dataset (e.g., ChEMBL) and then tokenizes SMILES based on the learned vocabulary for deep learning models. SmilesPE is inspired by [byte-pair-encoding (BPE)](https://www.aclweb.org/anthology/P16-1162/).
+
+![SPE Overview](TOC.PNG)
+
+## How it works
+
+A SMILES Pair Encoding (SPE) vocabulary is trained with following steps:
+- Step 1: Tokenize SMILES from a large dataset (e.g., ChEMBL16) at atom-level.
+- Step 2: Initialize the vocabulary with all unique tokens.
+- Step 3: Iteratively count the occurs of all token pairs in the tokenized SMILES and merge the most frequent occurring token pair as a new token and add it to the vocabulary. This step will stop when one of the conditions is met: (1) A desired vocabulary size is achieved or (2) No pair of tokens has frequency larger than the frequency threshold. The vocabulary size and frequency threshold are hyperparameters for training SMILES pair encoding. 
 
 
-## Overview
+After training the SPE vocabulary, we can then tokenize SMILES based on the trained vocabulary. The SMILES substrings in the trained vocabulary are ordered by their frequency. During the tokenization process, the SMILES is first tokenized at atom-level. SPE will then iteratively check the frequency of each pairs of tokens and merge the pair of tokens that have the highest frequency count in the trained SPE vocabulary until no further merge operation can be conducted. 
+
 
 ## Installation
 
@@ -49,10 +59,12 @@ import selfies
 smi = 'CC[N+](C)(C)Cc1ccccc1Br'
 sel = selfies.encoder(smi)
 print(f'SELFIES string: {sel}')
-> >> SELFIES string: [C][C][N+][Branch1_2][epsilon][C][Branch1_3][epsilon][C][C][c][c][c][c][c][c][Ring1][Branch1_1][Br]    
+
+>>> SELFIES string: [C][C][N+][Branch1_2][epsilon][C][Branch1_3][epsilon][C][C][c][c][c][c][c][c][Ring1][Branch1_1][Br]    
 toks = atomwise_tokenizer(sel)
 print(toks)
-> >> ['[C]', '[C]', '[N+]', '[Branch1_2]', '[epsilon]', '[C]', '[Branch1_3]', '[epsilon]', '[C]', '[C]', '[c]', '[c]', '[c]', '[c]', '[c]', '[c]', '[Ring1]', '[Branch1_1]', '[Br]']
+
+>>> ['[C]', '[C]', '[N+]', '[Branch1_2]', '[epsilon]', '[C]', '[Branch1_3]', '[epsilon]', '[C]', '[C]', '[c]', '[c]', '[c]', '[c]', '[c]', '[c]', '[Ring1]', '[Branch1_1]', '[Br]']
 
 toks = kmer_tokenizer(sel, ngram=4)
 print(toks)
