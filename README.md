@@ -1,12 +1,12 @@
 # SMILES Pair Encoding: A Data-Driven Substructure Tokenization Algorithm for Deep Learning
-> SMILES Pair Encoding (SmilesPE) first learns a vocabulary of high frequency SMILES substrings from a large chemical dataset (e.g., ChEMBL) and then tokenizes SMILES based on the learned vocabulary for deep learning models. SmilesPE is inspired by [byte-pair-encoding (BPE)](https://www.aclweb.org/anthology/P16-1162/).
+> SMILES Pair Encoding ([ChemRxiv](https://chemrxiv.org/articles/SMILES_Pair_Encoding_A_Data-Driven_Substructure_Tokenization_Algorithm_for_Deep_Learning/12339368)) first learns a vocabulary of high frequency SMILES substrings from a large chemical dataset (e.g., ChEMBL) and then tokenizes SMILES based on the learned vocabulary for deep learning models. SMILES Pair Encoding is inspired by [byte-pair-encoding (BPE)](https://www.aclweb.org/anthology/P16-1162/).
 
 ![SPE Overview](TOC.PNG)
 
 ## How it works
 
 A SMILES Pair Encoding (SPE) vocabulary is trained with following steps:
-- Step 1: Tokenize SMILES from a large dataset (e.g., ChEMBL16) at atom-level.
+- Step 1: Tokenize SMILES from a large dataset (e.g., ChEMBL) at atom-level.
 - Step 2: Initialize the vocabulary with all unique tokens.
 - Step 3: Iteratively count the occurs of all token pairs in the tokenized SMILES and merge the most frequent occurring token pair as a new token and add it to the vocabulary. This step will stop when one of the conditions is met: (1) A desired vocabulary size is achieved or (2) No pair of tokens has frequency larger than the frequency threshold. The vocabulary size and frequency threshold are hyperparameters for training SMILES pair encoding. 
 
@@ -60,7 +60,7 @@ smi = 'CC[N+](C)(C)Cc1ccccc1Br'
 sel = selfies.encoder(smi)
 print(f'SELFIES string: {sel}')
 
->>> SELFIES string: [C][C][N+][Branch1_2][epsilon][C][Branch1_3][epsilon][C][C][c][c][c][c][c][c][Ring1][Branch1_1][Br]    
+SELFIES string: [C][C][N+][Branch1_2][epsilon][C][Branch1_3][epsilon][C][C][c][c][c][c][c][c][Ring1][Branch1_1][Br]    
 toks = atomwise_tokenizer(sel)
 print(toks)
 
@@ -79,7 +79,10 @@ import deepsmiles
 converter = deepsmiles.Converter(rings=True, branches=True)
 smi = 'CC[N+](C)(C)Cc1ccccc1Br'
 deepsmi = converter.encode(smi)
-print(f'DeepSMILES string: {deepsmi}')> >> DeepSMILES string: CC[N+]C)C)Ccccccc6Br
+print(f'DeepSMILES string: {deepsmi}')
+
+>>> DeepSMILES string: CC[N+]C)C)Ccccccc6Br
+    
 toks = atomwise_tokenizer(deepsmi)
 print(toks)
 
