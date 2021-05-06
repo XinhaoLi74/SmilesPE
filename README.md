@@ -1,5 +1,5 @@
 # SMILES Pair Encoding: A Data-Driven Substructure Tokenization Algorithm for Deep Learning
-> SMILES Pair Encoding ([ChemRxiv](https://chemrxiv.org/articles/SMILES_Pair_Encoding_A_Data-Driven_Substructure_Tokenization_Algorithm_for_Deep_Learning/12339368)) first learns a vocabulary of high frequency SMILES substrings from a large chemical dataset (e.g., ChEMBL) and then tokenizes SMILES based on the learned vocabulary for deep learning models. SMILES Pair Encoding is inspired by [byte-pair-encoding (BPE)](https://www.aclweb.org/anthology/P16-1162/).
+> SMILES Pair Encoding ([JCIM](https://pubs.acs.org/doi/abs/10.1021/acs.jcim.0c01127)) first learns a vocabulary of high frequency SMILES substrings from a large chemical dataset (e.g., ChEMBL) and then tokenizes SMILES based on the learned vocabulary for deep learning models. SMILES Pair Encoding is inspired by [byte-pair-encoding (BPE)](https://www.aclweb.org/anthology/P16-1162/).
 
 ![SPE Overview](TOC.PNG)
 
