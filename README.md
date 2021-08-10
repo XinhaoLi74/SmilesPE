@@ -115,3 +115,6 @@ spe.tokenize(smi)
 ### Train a SmilesPE Tokenizer with a Custom Dataset
 
 See [train_SPE.ipynb](https://github.com/XinhaoLi74/SmilesPE/blob/master/Examples/train_SPE.ipynb) for an example of training A SPE tokenizer on ChEMBL data.
+
+### Use SPE in Huggingface library
+Please see this [colab](https://colab.research.google.com/drive/1tsiTpC4i26QNdRzBHFfXIOFVToE54-9b?usp=sharing) for an example.
