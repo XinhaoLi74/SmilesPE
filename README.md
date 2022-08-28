@@ -112,7 +112,8 @@ spe.tokenize(smi)
 >>> 'CC [N+](C) (C)C c1ccccc1 Br'
 ```
 
-### Pre-trained Models used in the Paper: See the MolPMoFiT [Github](https://github.com/XinhaoLi74/MolPMoFiT)
+### Pre-trained Models used in the Paper: 
+See the donwload links and the instructions in MolPMoFiT [Github](https://github.com/XinhaoLi74/MolPMoFiT)
 
 ### Train a SmilesPE Tokenizer with a Custom Dataset
 
